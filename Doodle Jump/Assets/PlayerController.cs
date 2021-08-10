@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private float moveInput;
     [SerializeField]private float speed;
-    private float jumpForce = 500f;
 
     // better jump
     public float fallMultiplier = 2.5f;
@@ -22,16 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-        Jump();
         BetterJump();
-    }
-
-    void Jump()
-    {
-        if (Input.GetButtonDown("Jump"))
-        {
-            rb.velocity = Vector2.up * jumpForce;
-        }
     }
 
     void BetterJump()
