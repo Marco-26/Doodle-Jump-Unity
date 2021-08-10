@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private float moveInput;
     [SerializeField]private float speed;
-    [SerializeField]private float jumpForce;
+    private float jumpForce = 500f;
 
 
     void Start()
@@ -30,9 +30,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.)
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Debug.Log("collision");
+    //    rb.AddForce(Vector2.up * jumpForce);
+    //}
 
 }
