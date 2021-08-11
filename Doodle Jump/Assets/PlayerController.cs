@@ -5,16 +5,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public Animator anim;
     private float moveInput;
     [SerializeField]private float speed;
 
     // better jump
     public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2f;
+    public float jump = 2f;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();    
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -31,5 +32,4 @@ public class PlayerController : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
     }
-
 }
