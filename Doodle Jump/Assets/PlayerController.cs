@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class PlayerController : MonoBehaviour
 
     // better jump
     public float fallMultiplier = 2.5f;
-    public float jump = 2f;
+
+    private Vector2 screenBounds;
 
     void Start()
     {
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
         moveInput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
         BetterJump();
+        KillPlayer();
     }
 
     void BetterJump()
@@ -30,6 +33,18 @@ public class PlayerController : MonoBehaviour
         if(rb.velocity.y < 0)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+    }
+
+    // kill player if it gets out of screen boundaries
+
+    void KillPlayer()
+    {
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+        if(transform.position.y < (screenBounds.y - 20))
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

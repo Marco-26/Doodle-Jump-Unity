@@ -11,13 +11,13 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-
         Vector3 spawnpos = new Vector3();
         for (int i = 0; i < platformCount; i++)
         {
             var prob = Random.Range(1, 10);
-            spawnpos.y += Random.Range(2f, 3f);
-            spawnpos.x = Random.Range(-5f, 5f);
+
+            spawnpos.y += Random.Range(2.5f, 3f); ;
+            spawnpos.x = Random.Range(-4.5f, 4.5f);
 
             if (prob > 2)
             {
