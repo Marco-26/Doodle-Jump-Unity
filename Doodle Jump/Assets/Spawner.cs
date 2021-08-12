@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
         {
             var prob = Random.Range(1, 10);
 
-            spawnpos.y += Random.Range(2.5f, 3f); ;
+            spawnpos.y += Random.Range(2.5f, 3f);
             spawnpos.x = Random.Range(-4.5f, 4.5f);
 
             if (prob > 2)
