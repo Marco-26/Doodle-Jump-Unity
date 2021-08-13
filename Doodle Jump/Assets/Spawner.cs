@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
     public GameObject normalPlatform;
     public GameObject BigBouncePlatform;
     public GameObject fallingPlatform;
-    private int platformCount = 300;
+    public int platformCount;
 
     private void Start()
     {

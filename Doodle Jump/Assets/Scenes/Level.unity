@@ -156,7 +156,7 @@ Transform:
   - {fileID: 2135737251}
   - {fileID: 1441433014}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &466190070
 MonoBehaviour:
@@ -381,7 +381,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1109526516
 GameObject:
@@ -412,7 +412,7 @@ Transform:
   m_Children:
   - {fileID: 1709856928}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1176601959
 GameObject:
@@ -677,6 +677,7 @@ MonoBehaviour:
   normalPlatform: {fileID: 6437713421424291499, guid: 8e8ba6d8630882e4b8e1e5e29f3d686f, type: 3}
   BigBouncePlatform: {fileID: 1201431260018360841, guid: c3f8465363aec5c4cb7872eeff2a1c14, type: 3}
   fallingPlatform: {fileID: 7658631311155016449, guid: f05e05b5d55b208478a1aa9ae99d34dd, type: 3}
+  platformCount: 0
 --- !u!4 &1526172693
 Transform:
   m_ObjectHideFlags: 0
@@ -689,7 +690,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1709856927
 PrefabInstance:
@@ -767,6 +768,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1777158301}
   - component: {fileID: 1777158300}
+  - component: {fileID: 1777158302}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -801,8 +803,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1777158302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777158299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d5106f28d3a5a499e689361b210707, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawner: {fileID: 1526172692}
+  stateMachine: 1
 --- !u!1 &2044700733
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +913,7 @@ RectTransform:
   m_Children:
   - {fileID: 1176601960}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
