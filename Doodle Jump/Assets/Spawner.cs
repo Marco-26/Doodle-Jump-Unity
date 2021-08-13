@@ -11,6 +11,13 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
+        ManageDifficulty();
+        Spawn();
+    }
+
+    void Spawn()
+    {
+        // spawn platforms
         Vector3 spawnpos = new Vector3();
         for (int i = 0; i < platformCount; i++)
         {
@@ -31,6 +38,22 @@ public class Spawner : MonoBehaviour
             {
                 Instantiate(fallingPlatform, spawnpos, Quaternion.identity);
             }
+        }
+    }
+
+    // set difficulty
+    void ManageDifficulty()
+    {
+        // access spawner scripts and change variables acording to difficulty
+        if (GameValues.difficulty == GameValues.Difficulties.normal)
+        {
+            //do something
+            platformCount = 300;
+        }
+        else if (GameValues.difficulty == GameValues.Difficulties.hard)
+        {
+            //do something
+            platformCount = 600;
         }
     }
 }
