@@ -4,56 +4,62 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject normalPlatform;
-    public GameObject BigBouncePlatform;
-    public GameObject fallingPlatform;
-    public int platformCount;
+    // public GameObject normalPlatform;
+    // public GameObject BigBouncePlatform;
+    // public GameObject fallingPlatform;
+    public Spawn[] platforms;
+    private int platformCount = 300;
 
-    private void Start()
+    // private void Start()
+    // {
+    //     Vector3 spawnpos = new Vector3();
+    //     for (int i = 0; i < platformCount; i++)
+    //     {
+    //         var prob = Random.Range(1, 10);
+
+    //         spawnpos.y += Random.Range(2.5f, 2.9f);
+    //         spawnpos.x = Random.Range(-4.5f, 4.5f);
+
+    //         if (prob > 2)
+    //         {
+    //             Instantiate(normalPlatform, spawnpos, Quaternion.identity);
+    //         }
+    //         else if (prob > 1)
+    //         {
+    //             Instantiate(BigBouncePlatform, spawnpos, Quaternion.identity);
+    //         }
+    //         else
+    //         {
+    //             Instantiate(fallingPlatform, spawnpos, Quaternion.identity);
+    //         }
+    //     }
+    // }
+
+
+    void Update()
     {
-        ManageDifficulty();
-        Spawn();
+        GenerateLevel();
     }
 
-    void Spawn()
+    private void GenerateLevel()
     {
-        // spawn platforms
-        Vector3 spawnpos = new Vector3();
-        for (int i = 0; i < platformCount; i++)
+        int n = Random.Range(0, 100);
+        for (int i = 0; i < platforms.Length; i++)
         {
-            var prob = Random.Range(1, 10);
-
-            spawnpos.y += Random.Range(2.5f, 2.9f);
-            spawnpos.x = Random.Range(-4.5f, 4.5f);
-
-            if (prob > 2)
+            if (n >= platforms[i].minProbability && n <= platforms[i].maxProbability)
             {
-                Instantiate(normalPlatform, spawnpos, Quaternion.identity);
-            }
-            else if (prob > 1)
-            {
-                Instantiate(BigBouncePlatform, spawnpos, Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(fallingPlatform, spawnpos, Quaternion.identity);
+                Instantiate(platforms[i].spawnObject, transform.position, Quaternion.identity);
+                break;
             }
         }
     }
+}
 
-    // set difficulty
-    void ManageDifficulty()
-    {
-        // access spawner scripts and change variables acording to difficulty
-        if (GameValues.difficulty == GameValues.Difficulties.normal)
-        {
-            //do something
-            platformCount = 300;
-        }
-        else if (GameValues.difficulty == GameValues.Difficulties.hard)
-        {
-            //do something
-            platformCount = 600;
-        }
-    }
+[System.Serializable]
+public class Spawn
+{
+    public GameObject spawnObject;
+    public int minProbability = 0;
+    public int maxProbability = 100;
+
 }
