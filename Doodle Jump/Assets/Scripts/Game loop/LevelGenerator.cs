@@ -7,9 +7,18 @@ public class LevelGenerator : MonoBehaviour
     public Spawn[] platforms;
     public int platformCount;
     private Vector3 spawnpos = new Vector3();
+    //[SerializeField] private MovingPlatform movingPlat;
+    GameObject[] mPlatform;
 
     void Start()
     {
+        mPlatform = GameObject.FindGameObjectsWithTag("MovingPlatform");
+        for (int i = 0; i < mPlatform.Length; i++)
+        {
+            //create bool to know if game is normal or hard, and change variables here.
+            mPlatform[i].GetComponent<MovingPlatform>();
+        }
+
         ManageDifficulty();
         for (int a = 0; a < platformCount; a++)
         {
@@ -22,13 +31,15 @@ public class LevelGenerator : MonoBehaviour
         // access spawner scripts and change variables acording to difficulty
         if (GameValues.difficulty == GameValues.Difficulties.normal)
         {
-            //do something
+            //less platforms and moving platform speed is lower
             platformCount = 300;
+            //movingPlat.speed = 3;
         }
         else if (GameValues.difficulty == GameValues.Difficulties.hard)
         {
-            //do something
+            //more platforms and moving platform speed is higher
             platformCount = 600;
+            //movingPlat.speed = 9;
         }
     }
 
