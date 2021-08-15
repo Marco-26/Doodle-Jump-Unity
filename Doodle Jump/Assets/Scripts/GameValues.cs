@@ -6,4 +6,5 @@ public static class GameValues
 {
     public enum Difficulties { normal, hard, infinite };
     public static Difficulties difficulty;
+ 
 }
