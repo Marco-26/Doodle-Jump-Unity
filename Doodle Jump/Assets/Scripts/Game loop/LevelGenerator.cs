@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class LevelGenerator : MonoBehaviour
 {
     public Spawn[] platforms;
     public int platformCount;
@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
             if (n >= platforms[i].minProbability && n <= platforms[i].maxProbability)
             {
                 spawnpos.y += Random.Range(2.5f, 2.9f);
-                spawnpos.x = Random.Range(-5.3f, 5.3f);
+                spawnpos.x = Random.Range(-5.1f, 5.1f);
                 Instantiate(platforms[i].spawnObject, spawnpos, Quaternion.identity);
             }
         }
