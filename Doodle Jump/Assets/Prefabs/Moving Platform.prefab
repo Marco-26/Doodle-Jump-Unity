@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 187825222383693476}
   m_Layer: 0
   m_Name: Moving Platform
-  m_TagString: Untagged
+  m_TagString: Platforms
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 5622742856393660591}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Platforms
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -269,4 +269,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   right: {fileID: 5622742855059131345}
   left: {fileID: 5622742856311402867}
-  speed: 5
+  speed: 0
