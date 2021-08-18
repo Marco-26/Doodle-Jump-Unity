@@ -8,15 +8,9 @@ public class Bounce : MonoBehaviour
     private Animator anim;
     public float platformNumber;
 
-    private bool isTouched;
-    private GameObject platformDetector;
-    [SerializeField] private StatsManager playerScore;
-
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        platformDetector = GameObject.FindGameObjectWithTag("PlatformDetector");
-        playerScore = platformDetector.GetComponent<StatsManager>();
         anim = player.GetComponent<Animator>();
     }
 
@@ -45,19 +39,4 @@ public class Bounce : MonoBehaviour
         }
 
     }
-
-    //update score
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("PlatformDetector"))
-        {
-            // only allow to touch one time per platform
-            if (!isTouched)
-            {
-                playerScore.score++;
-                isTouched = true;
-            }
-        }
-    }
-
 }

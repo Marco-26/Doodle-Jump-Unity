@@ -1,27 +1,38 @@
 using UnityEngine;
-using UnityEngine.UI;
-using System;
 
 public class StatsManager : MonoBehaviour
 {
-    public int score;
+    public float score;
+    public float highscore;
     [SerializeField]private Transform player;
-    [SerializeField]private Stats stats;
+
+    private void Start()
+    {
+        highscore = PlayerPrefs.GetFloat("highscore", 0);
+    }
 
     private void Update()
-    {
-        // simply update score, bcause all logic is being made in bounce script
-        stats.score = score;
-
+    {   
         UpdateHighscore();
+        Stats();
     }
 
     void UpdateHighscore()
     {
         // if the current score is bigger than the previous highscore, update the highscore
-        if(this.score > stats.highscore)
+        if (this.score > highscore)
         {
-            stats.highscore = this.score;
+            highscore = this.score;
+            PlayerPrefs.SetFloat("highscore", highscore);
+        }
+    }
+
+    void Stats()
+    {
+        // count current score
+        if(player.position.y > score)
+        {
+            score = Mathf.Round(player.position.y);
         }
     }
 }
