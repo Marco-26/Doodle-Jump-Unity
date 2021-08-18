@@ -4,19 +4,14 @@ using System;
 
 public class StatsManager : MonoBehaviour
 {
-    public float score;
+    public int score;
     [SerializeField]private Transform player;
     [SerializeField]private Stats stats;
 
     private void Update()
     {
-        // score only counts upwards, never downwards
-        if(player.transform.position.y > score)
-        {
-            // variable to calculate y axis
-            score = player.position.y;            
-        }
-        stats.score = Mathf.Round(score);
+        // simply update score, bcause all logic is being made in bounce script
+        stats.score = score;
 
         UpdateHighscore();
     }
@@ -24,9 +19,9 @@ public class StatsManager : MonoBehaviour
     void UpdateHighscore()
     {
         // if the current score is bigger than the previous highscore, update the highscore
-        if(stats.score > stats.highscore)
+        if(this.score > stats.highscore)
         {
-            stats.highscore = stats.score;
+            stats.highscore = this.score;
         }
     }
 }

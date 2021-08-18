@@ -11,6 +11,6 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         // display score in screen
-        scoreText.text = Mathf.Round(stats.score).ToString();
+        scoreText.text = stats.score.ToString();
     }
 }
