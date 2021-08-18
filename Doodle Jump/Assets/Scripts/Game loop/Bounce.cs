@@ -8,9 +8,15 @@ public class Bounce : MonoBehaviour
     private Animator anim;
     public float platformNumber;
 
+    private bool isTouched;
+    private GameObject platformDetector;
+    [SerializeField] private Score playerScore;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        platformDetector = GameObject.FindGameObjectWithTag("PlatformDetector");
+        playerScore = platformDetector.GetComponent<Score>();
         anim = player.GetComponent<Animator>();
     }
 
@@ -37,5 +43,20 @@ public class Bounce : MonoBehaviour
             }
             anim.SetTrigger("Stretch");
         }
+
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlatformDetector"))
+        {
+            if (!isTouched)
+            {
+                playerScore.points++;
+                isTouched = true;
+                Debug.Log(playerScore.points);
+            }
+        }
+    }
+
 }

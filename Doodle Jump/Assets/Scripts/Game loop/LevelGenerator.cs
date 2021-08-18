@@ -17,7 +17,7 @@ public class LevelGenerator : MonoBehaviour
         if (GameValues.difficulty == GameValues.Difficulties.normal)
         {
             //Generate level based on difficulty
-            GenerateLevel(300);
+            GenerateLevel(20);
 
             //Find moving platforms
             mPlatform = GameObject.FindGameObjectsWithTag("MovingPlatform");
