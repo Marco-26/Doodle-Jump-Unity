@@ -37,5 +37,6 @@ public class Bounce : MonoBehaviour
             }
             anim.SetTrigger("Stretch");
         }
+
     }
 }
