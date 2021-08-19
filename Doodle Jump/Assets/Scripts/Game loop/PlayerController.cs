@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    [SerializeField]private float speed;
     public Animator anim;
     private float moveInput;
-    [SerializeField]private float speed;
+    private Rigidbody2D rb;
+    private Transform transform;
 
     // better jump
     public float fallMultiplier = 2.5f;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        transform = GetComponent<Transform>();
     }
 
     void Update()
@@ -46,5 +48,10 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    public void SpawnPlayer(float x, float y)
+    {
+        transform.position = new Vector2(x, y);
     }
 }

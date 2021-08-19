@@ -5,6 +5,7 @@ public class LevelGenerator : MonoBehaviour
     public Spawn[] platforms;
     private Vector3 spawnpos = new Vector3();
     GameObject[] mPlatform;
+    [SerializeField] PlayerController player;
 
     void Start()
     {
@@ -47,7 +48,10 @@ public class LevelGenerator : MonoBehaviour
     private void GenerateLevel(int platformCount)
     {
         for (int a = 0; a < platformCount; a++)
-        {        
+        {
+            // if loop is int first index, spawn the player at spawnpos cordinates with addition in y axis.
+            if (a == 1) player.SpawnPlayer(spawnpos.x, spawnpos.y + 2f);
+
             // generate level based on probabilities
             int n = Random.Range(0, 100);
 
@@ -60,6 +64,7 @@ public class LevelGenerator : MonoBehaviour
                     Instantiate(platforms[i].spawnObject, spawnpos, Quaternion.identity);
                 }
             }
+
         }
     }
 }
