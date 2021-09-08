@@ -3,17 +3,26 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public Spawn[] platforms;
-    private Vector3 spawnpos = new Vector3();
+    private Vector3 spawnpos = new Vector3(0, -3.676598f, 0);
     GameObject[] mPlatform;
     [SerializeField] PlayerController player;
+    private float lastPlatform;
 
     void Start()
     {
         ManageDifficulty();
     }
 
+    private void Update()
+    {
+        if (player.transform.position.y >= lastPlatform)
+        {
+            Debug.Log("Finish game");
+        }
+    }
+
     void ManageDifficulty()
-    {       
+    {
         // access spawner scripts and change variables according to difficulty
         if (GameValues.difficulty == GameValues.Difficulties.normal)
         {
@@ -49,7 +58,7 @@ public class LevelGenerator : MonoBehaviour
     {
         for (int a = 0; a < platformCount; a++)
         {
-            // if loop is int first index, spawn the player at spawnpos cordinates with addition in y axis.
+            // if loop is in first index, spawn the player at spawnpos cordinates with addition in y axis.
             if (a == 1) player.SpawnPlayer(spawnpos.x, spawnpos.y + 2f);
 
             // generate level based on probabilities
@@ -64,10 +73,14 @@ public class LevelGenerator : MonoBehaviour
                     Instantiate(platforms[i].spawnObject, spawnpos, Quaternion.identity);
                 }
             }
-
+            if (a == 299)
+            {
+                lastPlatform = spawnpos.y;
+            }
         }
     }
 }
+
 
 // class that contains the platforms to spawn
 [System.Serializable]
