@@ -6,7 +6,7 @@ public class LevelGenerator : MonoBehaviour
     private Vector3 spawnpos = new Vector3(0, -3.676598f, 0);
     GameObject[] mPlatform;
     [SerializeField] PlayerController player;
-    private float lastPlatform;
+    private float lastPlatformPosition;
 
     void Start()
     {
@@ -15,9 +15,8 @@ public class LevelGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (player.transform.position.y >= lastPlatform)
-        {
-            Debug.Log("Finish game");
+        if (player.transform.position.y >= lastPlatformPosition+2f) {
+            FindObjectOfType<GameManager>().GameWin();
         }
     }
 
@@ -56,32 +55,25 @@ public class LevelGenerator : MonoBehaviour
 
     private void GenerateLevel(int platformCount)
     {
-        for (int a = 0; a < platformCount; a++)
-        {
+        for (int a = 0; a < platformCount; a++) {
             // if loop is in first index, spawn the player at spawnpos cordinates with addition in y axis.
             if (a == 1) player.SpawnPlayer(spawnpos.x, spawnpos.y + 2f);
 
             // generate level based on probabilities
             int n = Random.Range(0, 100);
 
-            for (int i = 0; i < platforms.Length; i++)
-            {
-                if (n >= platforms[i].minProbability && n <= platforms[i].maxProbability)
-                {
+            for (int i = 0; i < platforms.Length; i++) {
+                if (n >= platforms[i].minProbability && n <= platforms[i].maxProbability) {
                     spawnpos.y += Random.Range(2.5f, 2.9f);
                     spawnpos.x = Random.Range(-5.1f, 5.1f);
                     Instantiate(platforms[i].spawnObject, spawnpos, Quaternion.identity);
                 }
             }
-            if (a == 299)
-            {
-                lastPlatform = spawnpos.y;
-            }
         }
+
+        lastPlatformPosition = spawnpos.y;
     }
 }
-
-
 // class that contains the platforms to spawn
 [System.Serializable]
 public class Spawn
