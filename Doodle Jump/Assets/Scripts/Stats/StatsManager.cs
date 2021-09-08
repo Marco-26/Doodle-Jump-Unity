@@ -4,7 +4,7 @@ public class StatsManager : MonoBehaviour
 {
     public float score;
     public float highscore;
-    [SerializeField]private Transform player;
+    [SerializeField] private Transform player;
 
     private void Start()
     {

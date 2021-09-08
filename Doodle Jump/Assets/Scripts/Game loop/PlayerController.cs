@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,11 +9,14 @@ public class PlayerController : MonoBehaviour
     private float moveInput;
     private Rigidbody2D rb;
     private Transform transform;
+    public bool is_dead = false;
 
     // better jump
     public float fallMultiplier = 2.5f;
 
     private Vector2 screenBounds;
+
+    [SerializeField] private GameManager gManager;
 
     void Start()
     {
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(is_dead);
         moveInput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
         BetterJump();
@@ -45,8 +48,9 @@ public class PlayerController : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         if(transform.position.y < (screenBounds.y - 20))
         {
-            Destroy(gameObject);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            is_dead = true;
+            gManager.RestartGame();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
