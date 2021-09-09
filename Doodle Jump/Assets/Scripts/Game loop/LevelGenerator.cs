@@ -11,12 +11,13 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
         ManageDifficulty();
+        Debug.Log(lastPlatformPosition);
     }
 
     private void Update()
     {
         if (player.transform.position.y >= lastPlatformPosition+2f) {
-            FindObjectOfType<GameManager>().GameWin();
+            FindObjectOfType<UIManager>().WinScreen(); // activate win screen
         }
     }
 
