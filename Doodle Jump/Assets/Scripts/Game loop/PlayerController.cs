@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]private float speed;
-    public Animator anim;
     private float moveInput;
     private Rigidbody2D rb;
     private Transform transform;
@@ -45,8 +43,7 @@ public class PlayerController : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         if(transform.position.y < (screenBounds.y - 20))
         {
-            Destroy(gameObject);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            FindObjectOfType<GameManager>().RestartGame();
         }
     }
 
