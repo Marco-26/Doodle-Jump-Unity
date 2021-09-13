@@ -7,7 +7,6 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text scoreText;
     [SerializeField] private Text highscoreText;
-    [SerializeField] private Text gameWinScore;
     [SerializeField] private StatsManager stats;
 
     // game win
