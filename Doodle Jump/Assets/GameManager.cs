@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
         Level,
     }
 
-    public void RestartGame() {
+    public void LoadLevel() {
         StartCoroutine(loader(Scene.Level, .5f));
     }
 
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(loader(Scene.Menu, .5f));
     }
 
-    private IEnumerator loader(Scene scene, float waitTime) {
+    public IEnumerator loader(Scene scene, float waitTime) {
         //add fade in out anim here
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(scene.ToString());

@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         if(transform.position.y < (screenBounds.y - 20))
         {
-            FindObjectOfType<GameManager>().RestartGame();
+            FindObjectOfType<GameManager>().LoadLevel();
         }
     }
 
