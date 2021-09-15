@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    private void Resume() {
+    public void Resume() {
         isPaused = !isPaused;
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
@@ -32,5 +32,9 @@ public class PauseMenu : MonoBehaviour
         isPaused = !isPaused;
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void Exit(){
+        Application.Quit();
     }
 }

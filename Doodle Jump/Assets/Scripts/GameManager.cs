@@ -15,10 +15,6 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(loader(Scene.Level, 1f));
     }
 
-    public void LoadMenu() {
-        StartCoroutine(loader(Scene.Menu, 1f));
-    }
-
     public IEnumerator loader(Scene scene, float waitTime) {
         //add fade in out anim here
         SceneTransitionsAnimator.SetTrigger("Start");

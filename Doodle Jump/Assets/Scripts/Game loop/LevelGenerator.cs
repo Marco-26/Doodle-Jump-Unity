@@ -11,12 +11,13 @@ public class LevelGenerator : MonoBehaviour
     private void Start() {
         platformCount = Random.Range(500, 1000);
         GenerateLevel(platformCount);
+        Debug.Log(lastPlatformPosition);
     }
 
     private void Update()
     {
         if (player.transform.position.y >= lastPlatformPosition+2f) {
-            FindObjectOfType<UIManager>().WinScreen(); // activate win screen
+            FindObjectOfType<WinScreen>().ShowScreen(); // activate win screen
         }
     }
 
