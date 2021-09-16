@@ -4,57 +4,24 @@ public class LevelGenerator : MonoBehaviour
 {
     public Spawn[] platforms;
     private Vector3 spawnpos = new Vector3(0, -3.676598f, 0);
-    GameObject[] mPlatform;
     [SerializeField] PlayerController player;
     private float lastPlatformPosition;
+    private float platformCount;
 
-    void Start()
-    {
-        ManageDifficulty();
+    private void Start() {
+        platformCount = Random.Range(500, 1000);
+        GenerateLevel(platformCount);
         Debug.Log(lastPlatformPosition);
     }
 
     private void Update()
     {
         if (player.transform.position.y >= lastPlatformPosition+2f) {
-            FindObjectOfType<UIManager>().WinScreen(); // activate win screen
+            FindObjectOfType<WinScreen>().ShowScreen(); // activate win screen
         }
     }
 
-    void ManageDifficulty()
-    {
-        // access spawner scripts and change variables according to difficulty
-        if (GameValues.difficulty == GameValues.Difficulties.normal)
-        {
-            //Generate level based on difficulty
-            GenerateLevel(300);
-
-            //Find moving platforms
-            mPlatform = GameObject.FindGameObjectsWithTag("MovingPlatform");
-
-            //Get moving platforms script and change speed based on difficulty
-            for (int i = 0; i < mPlatform.Length; i++)
-            {
-                mPlatform[i].GetComponent<MovingPlatform>().speed = 4;
-            }
-        }
-        else if (GameValues.difficulty == GameValues.Difficulties.hard)
-        {
-            //Generate level based on difficulty
-            GenerateLevel(600);
-
-            //Find moving platforms
-            mPlatform = GameObject.FindGameObjectsWithTag("MovingPlatform");
-
-            //Get moving platforms script and change speed based on difficulty
-            for (int i = 0; i < mPlatform.Length; i++)
-            {
-                mPlatform[i].GetComponent<MovingPlatform>().speed = 9;
-            }
-        }
-    }
-
-    private void GenerateLevel(int platformCount)
+    private void GenerateLevel(float platformCount)
     {
         for (int a = 0; a < platformCount; a++) {
             // if loop is in first index, spawn the player at spawnpos cordinates with addition in y axis.

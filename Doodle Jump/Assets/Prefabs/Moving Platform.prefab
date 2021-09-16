@@ -269,4 +269,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   right: {fileID: 5622742855059131345}
   left: {fileID: 5622742856311402867}
-  speed: 0
+  speed: 7
