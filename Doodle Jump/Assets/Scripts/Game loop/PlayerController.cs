@@ -10,8 +10,11 @@ public class PlayerController : MonoBehaviour
 
     // better jump
     public float fallMultiplier = 2.5f;
-
     private Vector2 screenBounds;
+
+    // particle system
+    [SerializeField] private Transform particleSpawn;
+    [SerializeField] private GameObject particles;
 
     void Start()
     {
@@ -20,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.J)){    Instantiate(particles, particleSpawn.position, particleSpawn.rotation); }
+        
         moveInput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
         BetterJump();
@@ -41,6 +46,8 @@ public class PlayerController : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         if(transform.position.y < (screenBounds.y - 20))
         {
+            Instantiate(particles, particleSpawn.position, particleSpawn.rotation);
+            this.gameObject.SetActive(false);
             FindObjectOfType<GameManager>().LoadLevel();
         }
     }
