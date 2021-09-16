@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private float speed;
     private float moveInput;
     private Rigidbody2D rb;
-    private Transform transform;
 
     // better jump
     public float fallMultiplier = 2.5f;
@@ -17,7 +16,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        transform = GetComponent<Transform>();
     }
 
     void Update()
@@ -45,6 +43,12 @@ public class PlayerController : MonoBehaviour
         {
             FindObjectOfType<GameManager>().LoadLevel();
         }
+    }
+
+    public void DisablePlayer(){
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
+        this.enabled = false;
     }
 
     public void SpawnPlayer(float x, float y)

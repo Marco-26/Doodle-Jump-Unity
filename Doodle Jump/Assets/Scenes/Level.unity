@@ -1567,7 +1567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8721126335571404981, guid: fe0a0309719e1144d84aa4844c75a4cb, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8721126335571404983, guid: fe0a0309719e1144d84aa4844c75a4cb, type: 3}
       propertyPath: animator
@@ -2641,6 +2641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScreen: {fileID: 854324599}
+  playerController: {fileID: 466190070}
 --- !u!1 &2135737250
 GameObject:
   m_ObjectHideFlags: 0
