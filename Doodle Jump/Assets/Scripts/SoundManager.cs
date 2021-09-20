@@ -5,7 +5,8 @@ public static class SoundManager {
     public enum Sound{
         death,
         menu,
-        win
+        win,
+        jump
     }
 
     public static void PlaySound(Sound sound){

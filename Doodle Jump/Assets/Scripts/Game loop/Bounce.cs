@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bounce : MonoBehaviour
 {
-    private GameObject player;
-    private Animator anim;
+    // private GameObject player;
+    private PlayerController playerScript;
     public float platformNumber;
 
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player");
-        anim = player.GetComponent<Animator>();
+    private void Start() {
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -24,18 +20,17 @@ public class Bounce : MonoBehaviour
 
             if (platformNumber == 1)
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 400f);
+                playerScript.Jump(400f);
             }
             else if(platformNumber == 2)
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 900f);
+                playerScript.Jump(900f);
             }
             else if (platformNumber == 3)
             {
                 this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 400f);
+                playerScript.Jump(500f);     
             }
-            anim.SetTrigger("Stretch");
         }
 
     }
