@@ -43,4 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 817a54606a33d0d4794e96da3497d3f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpSound: {fileID: 8300000, guid: 7cceb2b6b681eb04a8bbfcd13d75aff7, type: 3}
+  sounds:
+  - audioClip: {fileID: 8300000, guid: 046927d5a12e3da47a327683abbe592d, type: 3}
+    sound: 0
+  - audioClip: {fileID: 8300000, guid: 0ae93b073c9c55d4bba32d10e08c98fb, type: 3}
+    sound: 1
+  - audioClip: {fileID: 8300000, guid: b59bf086e1233384d9fa0c3b31ccfa6e, type: 3}
+    sound: 2

@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
         if(transform.position.y < (screenBounds.y - 20))
         {
+            SoundManager.PlaySound(SoundManager.Sound.death);
             Instantiate(particles, particleSpawn.position, particleSpawn.rotation);
             this.gameObject.SetActive(false);
             FindObjectOfType<GameManager>().LoadLevel();

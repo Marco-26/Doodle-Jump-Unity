@@ -7,6 +7,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] PlayerController player;
     private float lastPlatformPosition;
     private float platformCount;
+    private bool allowedToPlay = true;
 
     private void Start() {
         platformCount = Random.Range(500, 1000);
@@ -17,6 +18,10 @@ public class LevelGenerator : MonoBehaviour
     private void Update()
     {
         if (player.transform.position.y >= lastPlatformPosition+2f) {
+            if(allowedToPlay){
+                SoundManager.PlaySound(SoundManager.Sound.win);
+                allowedToPlay = false;
+            }   
             FindObjectOfType<WinScreen>().ShowScreen(); // activate win screen
         }
     }

@@ -11,5 +11,11 @@ public class GameAssets : MonoBehaviour
         }
     }
 
-    public AudioClip JumpSound;  
+    public SoundAudioClip[] sounds;
+
+    [System.Serializable]
+    public class SoundAudioClip{
+        public AudioClip audioClip;
+        public SoundManager.Sound sound;
+    }
 }

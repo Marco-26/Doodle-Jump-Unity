@@ -24,17 +24,14 @@ public class Bounce : MonoBehaviour
 
             if (platformNumber == 1)
             {
-                SoundManager.PlaySound();
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 400f);
             }
             else if(platformNumber == 2)
             {
-                SoundManager.PlaySound();
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 900f);
             }
             else if (platformNumber == 3)
             {
-                SoundManager.PlaySound();
                 this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 400f);
             }

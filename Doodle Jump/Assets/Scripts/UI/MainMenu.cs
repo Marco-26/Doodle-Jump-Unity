@@ -8,6 +8,10 @@ public class MainMenu : MonoBehaviour
     }
 
     void StartGame() {
-        if (Input.anyKey) FindObjectOfType<GameManager>().LoadLevel();
+        if (Input.anyKey) {
+            FindObjectOfType<GameManager>().LoadLevel();
+            SoundManager.PlaySound(SoundManager.Sound.menu);
+            Destroy(this);
+        }
     }
 }
