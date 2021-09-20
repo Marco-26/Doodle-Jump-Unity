@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 466190068}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -661,6 +661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+  anim: {fileID: 2135737252}
   fallMultiplier: 2.5
   particleSpawn: {fileID: 1454882593}
   particles: {fileID: 4759176439806626717, guid: fb5b922629bc5874cb1da7b0901090af, type: 3}
@@ -1570,7 +1571,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8721126335571404981, guid: fe0a0309719e1144d84aa4844c75a4cb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8721126335571404983, guid: fe0a0309719e1144d84aa4844c75a4cb, type: 3}
       propertyPath: animator

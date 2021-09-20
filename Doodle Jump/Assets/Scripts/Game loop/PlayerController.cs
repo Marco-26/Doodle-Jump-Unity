@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private float speed;
     private float moveInput;
     private Rigidbody2D rb;
+    [SerializeField]private Animator anim;
 
     // better jump
     public float fallMultiplier = 2.5f;
@@ -60,5 +61,11 @@ public class PlayerController : MonoBehaviour
     public void SpawnPlayer(float x, float y)
     {
         transform.position = new Vector2(x, y);
+    }
+
+    public void Jump(float amount){
+        anim.SetTrigger("Stretch");
+        SoundManager.PlaySound(SoundManager.Sound.jump);
+        rb.AddForce(Vector2.up * amount);
     }
 }
